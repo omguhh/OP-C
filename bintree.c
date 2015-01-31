@@ -2,20 +2,28 @@
 #include <stdlib.h>
 #include "bintree.h"
 
+
+// a structure called BINTTREE that contains a key,value and defines th left + right sections of the tree.
 struct BINTREE {
   int key;
   int value;
   bintree *left;
   bintree *right;
 } ;
-
-bintree *mkNode( int key, int value, bintree *left, bintree *right)
-{
+// Need to allocate space within the PC for the new node to be added to the tree.
 
 
   /* initalize the node here. Each node will have a key value pair. You need to check
   the value of the key and compare it with the root node. If it's smaller than the root node 
   point the node to the left of the binary tree. If it's bigger it point it to the larger?*/
+bintree *mkNode( int key, int value, bintree *left, bintree *right)
+{
+	bintree *tree = malloc(sizeof(*tree));
+	tree->key = key;
+	tree->value=value;
+	tree->left=left;
+	tree->right=right;
+	return tree;
 
 }
 
