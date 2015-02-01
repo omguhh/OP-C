@@ -14,6 +14,8 @@ struct BINTREE {
 
 bintree *mkNode( int key, int value, bintree *left, bintree *right)
 {
+/*pretty straight forward stuff. allocate memory for the tree being referenced by the pointer,then set the values of the node based on the structure we were given*/
+
 	bintree *tree = malloc(sizeof(*tree));
 	tree->key = key;
 	tree->value=value;
@@ -22,6 +24,7 @@ bintree *mkNode( int key, int value, bintree *left, bintree *right)
 	return tree;
 
 }
+/*free the pointer */
 
 void freeNode( bintree * tree)
 {
@@ -34,6 +37,7 @@ void freeNode( bintree * tree)
 /*need to remember there's no 'root' node explicitly defined here*/
 /*frees everything on the left + right trees*/
 
+/*NULLIFY ALL THE THINGS */
 void freeBinTree( bintree *tree)
 {
   if(tree->left != NULL) {
@@ -46,6 +50,7 @@ void freeBinTree( bintree *tree)
 	 tree->right=NULL;	
 	}
 else {
+        /*for the root*/
 	freeNode(tree); 
 	return;
 }
@@ -62,7 +67,7 @@ void indent( int off)
     printf( " ");
   }
 }
-
+/*gonna make you pretty with ascii printing*/
 static
 void printBinTreeOff( int off, bintree *tree)
 {
