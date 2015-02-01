@@ -24,14 +24,13 @@ bintree *mkNode( int key, int value, bintree *left, bintree *right)
 	return tree;
 
 }
-/*free the pointer */
+/*free a specific node */
 
 void freeNode( bintree * tree)
 {
   if(tree== NULL) return;
-  freeNode(tree->left);
-  freeNode(tree->right);
   free(tree);
+  tree=NULL;
   
 }
 /*need to remember there's no 'root' node explicitly defined here*/
