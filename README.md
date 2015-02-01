@@ -22,3 +22,14 @@ Lab 1 for Operating Systems &amp; Concurrency
 ##Problem 2
 
 1. Create a new module named avltree.Implement AVL trees.
+
+
+##Steps for running it:
+
+1. Type in gcc -c bintree.c
+ 
+2. Type in gcc -c treetest.c 
+
+3. Type in gcc bintree.o treetest.o -o prog
+
+4. Run it by typing ./prog
