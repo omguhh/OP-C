@@ -12,10 +12,6 @@ struct BINTREE {
 } ;
 // Need to allocate space within the PC for the new node to be added to the tree.
 
-
-  /* initalize the node here. Each node will have a key value pair. You need to check
-  the value of the key and compare it with the root node. If it's smaller than the root node 
-  point the node to the left of the binary tree. If it's bigger it point it to the larger?*/
 bintree *mkNode( int key, int value, bintree *left, bintree *right)
 {
 	bintree *tree = malloc(sizeof(*tree));
@@ -29,12 +25,32 @@ bintree *mkNode( int key, int value, bintree *left, bintree *right)
 
 void freeNode( bintree * tree)
 {
-  /* fill in here */
+  if(tree== NULL) return;
+  freeNode(tree->left);
+  freeNode(tree->right);
+  free(tree);
+  
 }
+/*need to remember there's no 'root' node explicitly defined here*/
+/*frees everything on the left + right trees*/
 
 void freeBinTree( bintree *tree)
 {
-  /* fill in here */
+  if(tree->left != NULL) {
+	 freeBinTree(tree->left);
+	 tree->left=NULL;	
+	}
+
+	else if(tree->right != NULL) {
+	 freeBinTree(tree->right);
+	 tree->right=NULL;	
+	}
+else {
+	freeNode(tree); 
+	return;
+}
+
+
 }
 
 static
@@ -90,4 +106,3 @@ int findKey( int key, bintree *tree)
 {
   /* fill in here */
 }
-
