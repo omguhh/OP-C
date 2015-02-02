@@ -109,17 +109,17 @@
                     // Case 2 - left right
                     if (balance > 1 && key > tree->left->key) {
                             tree->left = leftRotate(tree->left);
-                            printf( "Case 4 - right right %d\n", balance);
+                            printf( "Case 2 - right right %d\n", balance);
                             return rightRotate(tree);
                     }
                     // Case 3 - right right
                     if (balance < -1 && key > tree->right->key) {
-                            printf( "Case 2 - left right %d\n", balance);
+                            printf( "Case 3 - left right %d\n", balance);
                             return leftRotate(tree);
                     }
                     // Case 4 - right left
                     if (balance < -1 && key < tree->right->key) {
-                            printf( "Case 3 - right left %d\n", balance);
+                            printf( "Case 4 - right left %d\n", balance);
                             tree->right = rightRotate(tree->right);
                             return leftRotate(tree);
                     }
