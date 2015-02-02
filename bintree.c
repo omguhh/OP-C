@@ -92,9 +92,10 @@ bintree *mergeBinTrees( bintree *tree1, bintree *tree2)
 {
   if(tree2==NULL) return tree1;
   else {
+  	tree1= insertKey( tree2->key,tree2->value,tree1);
 	mergeBinTrees(tree1, tree2->left);
         mergeBinTrees(tree1, tree2->right);
-        tree1= insertKey( tree2->key,tree2->value,tree1);
+        
   }
 }
 
