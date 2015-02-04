@@ -1,2 +1,2 @@
-# OS_and_Concurrency
+# OS and Concurrency
 Labs for Operating Systems &amp; Concurrency 
