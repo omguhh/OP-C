@@ -58,10 +58,8 @@ is thread-local.
 
 ##Steps for running it:
 
-1. Type in gcc -c bintree.c
+1. Type in gcc -c problem1.c
  
-2. Type in gcc -c treetest.c 
+2. Type in gcc problem1.o -o prog
 
-3. Type in gcc bintree.o treetest.o -o prog
-
-4. Run it by typing ./prog
+3. Run it by typing ./prog
