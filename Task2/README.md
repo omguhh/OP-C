@@ -3,10 +3,6 @@ Lab 2 for Operating Systems &amp; Concurrency
 
 #TODO:
 
-##Problem 1
-
-1.2 Make sure that the time-reporting program from the previous problem keeps running
-after its parent or grandparents terminate. Hint: learn about daemons in UNIX.
 
 ##Problem 2
 
