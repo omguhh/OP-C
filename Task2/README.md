@@ -22,8 +22,24 @@ x = x+1;
 }
 x is assumed to be a globally shared variable which initially has the value 0 whereas i
 is thread-local.
-1. Describe a schedule which results in the nal value of x being minimal.
-2. Describe a schedule which results in the nal value of x being maximal.
+
+1. Describe a schedule which results in the final value of x being minimal.
+
+2. Describe a schedule which results in the final value of x being maximal.
+
+>In a schedule where each thread has to wait for the previous to finish writing, the maximal value is 9.
+
+> | Thread 1    | Thread 2    | Thread 3    |
+> |-------------|-------------|-------------|
+> | Read x=0    | Wait        | Wait        |
+> | Loop        | Wait        | Wait        |
+> | Write x = 3 | Wait        | Wait        |
+> |             | Read x = 3  | Wait        |
+> |             | Loop        | Wait        |
+> |             | Write x = 6 | Wait        |
+> |             |             | Read x = 6  |
+> |             |             | Loop        | 
+> |             |             | Write x = 9 |
 
 ##Steps for running it:
 
