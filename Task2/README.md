@@ -5,10 +5,6 @@ Lab 2 for Operating Systems &amp; Concurrency
 
 ##Problem 1
 
-1.1 Write a program in C which reports local time in logle in /tmp every 5 seconds.
-Use time.h functions such as ctime to get local time and convert it to string, use
-stdio.h functions such as fprintf to implement the logging itself.
-
 1.2 Make sure that the time-reporting program from the previous problem keeps running
 after its parent or grandparents terminate. Hint: learn about daemons in UNIX.
 
