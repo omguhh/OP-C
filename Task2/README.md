@@ -17,9 +17,11 @@ call <your executable> -a should have the same eect as ps -a | wc.
 
 Consider a variant of the puzzle presented in the lecture: assume that you have 3
 threads, each of which runs the following code:
+```
 for( int i=0; i<3; i++) {
 x = x+1;
 }
+``` 
 x is assumed to be a globally shared variable which initially has the value 0 whereas i
 is thread-local.
 
