@@ -40,7 +40,7 @@ is thread-local.
 > |             |             | Write x = 3 |
 
 
-2. Describe a schedule which results in the final value of x being maximal.
+ 2.Describe a schedule which results in the final value of x being maximal.
 
 >In a schedule where each thread has to wait for the previous to finish writing, the maximal value is 9. (It's _sequential_) 
 
