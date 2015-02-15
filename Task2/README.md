@@ -31,14 +31,14 @@ is thread-local.
 
 > | Thread 1    | Thread 2    | Thread 3    |
 > |-------------|-------------|-------------|
-> | Read x=0    | Wait        | Wait        |
-> | Loop        | Wait        | Wait        |
+> | Read x = 0  | Wait        | Wait        |
+> | Process     | Wait        | Wait        |
 > | Write x = 3 | Wait        | Wait        |
 > |             | Read x = 3  | Wait        |
-> |             | Loop        | Wait        |
+> |             | Process     | Wait        |
 > |             | Write x = 6 | Wait        |
 > |             |             | Read x = 6  |
-> |             |             | Loop        | 
+> |             |             | Process     | 
 > |             |             | Write x = 9 |
 
 ##Steps for running it:
