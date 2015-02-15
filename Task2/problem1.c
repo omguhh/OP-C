@@ -14,7 +14,6 @@ struct tm * timeinfo;
 FILE * fp;
 FILE * fr;
 
-#define DAEMON_NAME "vdaemon"
 
 void logTime() {
 /*based on task 1.1..*/
