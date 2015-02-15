@@ -29,7 +29,7 @@ is thread-local.
 
 2. Describe a schedule which results in the final value of x being maximal.
 
->In a schedule where each thread has to wait for the previous to finish writing, the maximal value is 9.
+>In a schedule where each thread has to wait for the previous to finish writing, the maximal value is 9. (It's _sequential_) 
 
 > | Thread 1    | Thread 2    | Thread 3    |
 > |-------------|-------------|-------------|
