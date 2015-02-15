@@ -25,7 +25,20 @@ x = x+1;
 x is assumed to be a globally shared variable which initially has the value 0 whereas i
 is thread-local.
 
-1. Describe a schedule which results in the final value of x being minimal.
+1. Describe a schedule which results in the final value of x being minimal. 
+
+>In a schedule where each thread has already read the global value x initally and is waiting for the previous therad to process it and then carries on working on it. Minimal value is 3.  
+
+> | Thread 1    | Thread 2    | Thread 3    |
+> |-------------|-------------|-------------|
+> | Read x = 0  | Read x = 0  | Read x = 0  |
+> | Process     | Wait        | Wait        |
+> | Write x = 3 | Wait        | Wait        |
+> |             | Process     | Wait        |
+> |             | Write x = 3 | Wait        |
+> |             |             | Process     |
+> |             |             | Write x = 3 |
+
 
 2. Describe a schedule which results in the final value of x being maximal.
 
