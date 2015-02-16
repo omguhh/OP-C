@@ -1,4 +1,4 @@
-# OP & C
+# OS & C
 Lab 3 for Operating Systems &amp; Concurrency 
 
 #TODO:
