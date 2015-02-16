@@ -6,9 +6,6 @@ Lab 2 for Operating Systems &amp; Concurrency
 
 ##Problem 2
 
-2.1 Familiarise yourself with the execve-family of system calls. Write a C program that
-takes its arguments and passes them on to the shell operation ps.
-
 2.2 Can you modify the solution of 2.1 so that the C program prints to the terminal how
 many processes would be printed if ps would be called with the given arguments? A
 call <your executable> -a should have the same eect as ps -a | wc.
