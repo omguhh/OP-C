@@ -87,8 +87,8 @@ and print to the screen their id (0 or 1) as well as the number they have consum
 here means that the distribution of produced items to consumers depends
 on the scheduling of threads or processes and, therefore, is non-deterministic.
 
-*Implement this by creating 4 processes or threads, one for each producer and one for each consumer.
-*Explain your choice between processes and threads!
+* Implement this by creating 4 processes or threads, one for each producer and one for each consumer.
+* Explain your choice between processes and threads!
 
 Hint: In case you choose processes, you may want to look at shm open.
 
