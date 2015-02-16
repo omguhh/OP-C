@@ -1,5 +1,5 @@
 # OP & C
-Lab 2 for Operating Systems &amp; Concurrency 
+Lab 3 for Operating Systems &amp; Concurrency 
 
 #TODO:
 
