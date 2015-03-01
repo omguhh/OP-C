@@ -27,8 +27,8 @@ struct timespec start, stop, finish;
 clock_gettime (CLOCK_REALTIME, &start);
 
 
-pthread_t pid;
-int container[N];
+pthread_t threadid[N];
+
 
 /*
 * Make N forks, call dummy in every child.
@@ -36,16 +36,16 @@ int container[N];
 
 for(int i=0;i<N;i++){
 
-	container[i] = pthread_create (&pid, NULL, dummy, NULL);
+	ret = pthread_create (&threadid[i], NULL, dummy, NULL);
 
-	if(container[i]<0)	{
+	if(ret<0)	{
 	printf("fork failed\n");
 	exit(EXIT_FAILURE);
 
 		}	
 
 	//child process
-	else if (container[i]==0)	{ 
+	else if (ret==0)	{ 
 		dummy(0);
 		exit(EXIT_SUCESS);	
 	}	
