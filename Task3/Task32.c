@@ -26,9 +26,9 @@ void measure_fork (unsigned N)
 struct timespec start, stop, finish;
 clock_gettime (CLOCK_REALTIME, &start);
 
-pid_t process_id[N];
 
-pthread_t pid[N];
+pthread_t pid;
+int container[N];
 
 /*
 * Make N forks, call dummy in every child.
@@ -36,16 +36,16 @@ pthread_t pid[N];
 
 for(int i=0;i<N;i++){
 
-	int ret = pthread_create (&pid[i], NULL, dummy, NULL);
+	container[i] = pthread_create (&pid, NULL, dummy, NULL);
 
-	if(ret<0)	{
+	if(container[i]<0)	{
 	printf("fork failed\n");
 	exit(EXIT_FAILURE);
 
 		}	
 
 	//child process
-	else if (ret==0)	{ 
+	else if (container[i]==0)	{ 
 		dummy(0);
 		exit(EXIT_SUCESS);	
 	}	
@@ -58,10 +58,10 @@ clock_gettime (CLOCK_REALTIME, &stop);
  *TODO: Wait for the forks.	
  *The wait system-call puts the process to sleep and waits for a child-process to end. 
 */
-
-void *result;
-pthread_join (pid, &result);
-
+for(int j= 0;j< N;j++)     {
+	void *result;
+	pthread_join (pid, &result);
+}
 
 clock_gettime (CLOCK_REALTIME, &finish);
 
