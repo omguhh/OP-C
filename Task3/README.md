@@ -11,11 +11,11 @@ Implement a three stage pipeline, where each pipeline stage is executed by an in
 thread. Use the lock-free producer-consumer implementation introduced in the
 lecture for all buffers needed. Each of the three pipeline stages should perform some
 dummy workload. The amount of work done should be determined by means of three
-different compile-time constants, #WORKLOAD1, #WORKLOAD2, and #WORKLOAD3, respectively.
+different compile-time constants, **WORKLOAD1**, **WORKLOAD2**, and **WORKLOAD3**, respectively.
 The program should create the buffers and the three threads, then it should provide
 input data to the initial buffer and consume the overall results from the final buffer.
 You may assume that the maximum data you will ever provide as input is a compile
-time constant named #N_DATA. The initial and the final buffer may be large enough to
+time constant named **N_DATA**. The initial and the final buffer may be large enough to
 hold all data. All intermediate buffers should be significantly smaller.
 As a starting point for your implementation you may wish to use the pipeline template
 provided on vision. Notice that the provided C code already contains dummy
