@@ -5,92 +5,58 @@ Lab 3 for Operating Systems &amp; Concurrency
 
 ##Problem 1
 
-1.1 Measure the time it takes to create a process in UNIX. Write a C program, that
-executes N forks, stores all child ids in an array and after that waits on all processes to
-terminate. Make each child process call the dummy function. Please be careful when
-measuring time. One of the ways to measure time accurately is by using the rt library.
-Consider the following template for your program:
+##1.1 [2 marks]
 
-```
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <sys/time.h>
-#include <time.h>
-void * dummy (void * arg)
-{
-return arg;
-}
-double xelapsed (struct timespec a, struct timespec b)
-{
-return (a.tv_sec - b.tv_sec) * 1000000.0
-+ (a.tv_nsec - b.tv_nsec) / 1000.0;
-}
-void measure_fork (unsigned N)
-{
-struct timespec start, stop, finish;
-clock_gettime (CLOCK_REALTIME, &start);
-/*
-* Make N forks, call dummy in every child.
-*/
-clock_gettime (CLOCK_REALTIME, &stop);
-/*
-* Wait for the forks.
-*/
-clock_gettime (CLOCK_REALTIME, &finish);
-printf ("%d proc: fork=%d (mics) wait=%d (mics) sum=%d (mics)\n",
-N, xelapsed (stop, start),
-xelapsed (finish, stop), xelapsed (finish, start);
-printf ("per proc: fork=%d (mics) wait=%d (mics) sum=%d (mics)\n",
-xelapsed (stop, start)/N,
-xelapsed (finish, stop)/N, xelapsed (finish, start)/N;
-}
+Implement a three stage pipeline, where each pipeline stage is executed by an independent
+thread. Use the lock-free producer-consumer implementation introduced in the
+lecture for all buffers needed. Each of the three pipeline stages should perform some
+dummy workload. The amount of work done should be determined by means of three
+different compile-time constants, #WORKLOAD1, #WORKLOAD2, and #WORKLOAD3, respectively.
+The program should create the buffers and the three threads, then it should provide
+input data to the initial buffer and consume the overall results from the final buffer.
+You may assume that the maximum data you will ever provide as input is a compile
+time constant named #N_DATA. The initial and the final buffer may be large enough to
+hold all data. All intermediate buffers should be significantly smaller.
+As a starting point for your implementation you may wish to use the pipeline template
+provided on vision. Notice that the provided C code already contains dummy
+workload execution through a function named process. That function assumes that
+the processed data is never negative!
 
-```
-Execute for various N-s: 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 10000. You can find
-the above code as well as a makefile in the assignment section of vision. Make sure,
-you check the success of fork and wait.
-Display your findings in a graph and explain them; in particular the evolution of
-time per process as N gets bigger. Less than 200 words should suffice!
 
-1.2 Repeat the experiment from Problem 1.1, but for threads instead of processes. In
-order to create a thread, use pthread create:
-```
-...
-pthread_t pid;
-int ret = pthread_create (&pid, NULL, dummy, NULL);
-...
+##1.2 [3 marks]
 
-```
-where dummy is a function from the previous problem. A thread-id will be stored in
-pid. pthread create returns 0 in case of a successful thread creation.
-In order to wait for the thread termination use pthread join:
-```
-...
-void *result;
-pthread_join (pid, &result);
-...
-```
-where pid is the id of the thread we are waiting for. When compiling a program, don’t
-forget to add -pthread compilation option. Compare the runtimes you measure with
-those from Problem 2.1. Create a little graph and describe your findings. How many
-threads can you create before the creation fails?
+Modify your solution to 1.1 so that your program measures the average latency, the
+minimum latency, the maximum latency as well as the throughput achieved when
+processing N DATA many data items.
+As in the previous task, use the system function clock gettime for measuring execution
+times.
+Devise your experiments carefully in order to obtain as accurate as possible runtime
+figures.
+Analyse the impact that the following variations have on the observed values:
+• increase the overall number of data item processed
+• decrease the workload of all pipeline stages
+• keep WORKLOAD1, decrease the other two
+Run systematic experiments and produce graphs of your results. Try to explain
+your findings. A short text should suffice.
 
-##Problem 2
+##1.3 [2 marks]
 
-Consider a simple producer / consumer scenario. We have two producers and two consumers. The two producers independently produce positive numbers from 1 to a pre-specified number N and negative numbers -1 to -N, respectively. These numbers go into a single queue.
+Modify your solution to 1.2 by changing your push and pop methods so that they use
+mutexes for implementing mutual exclusion.
+Repeat your experiments and contrast them to your findings from 1.2.
 
-We have 2 consumers that independently consume the numbers from the queue
-and print to the screen their id (0 or 1) as well as the number they have consumed. Independently
-here means that the distribution of produced items to consumers depends
-on the scheduling of threads or processes and, therefore, is non-deterministic.
 
-* Implement this by creating 4 processes or threads, one for each producer and one for each consumer.
-* Explain your choice between processes and threads!
+##1.4 [3 marks]
 
-Hint: In case you choose processes, you may want to look at shm open.
+Modify your solution into a data-parallel solution in the way described in the lecture
+on pipelining. Each of your three worker threads should now perform all three pipeline
+stages on each data item they process.
+Try to keep the experimental setup close to the setup used earlier. In particular,
+do keep your input buffer and your output buffer. Rerun your experiments with this
+solution and interpret the results. How can you optimise the overhead that stems
+from the use of the input and output buffer? Measure and document the effect of any
+optimisation you try.
+
 
 ##Steps for running it:
 
