@@ -33,9 +33,13 @@ times.
 Devise your experiments carefully in order to obtain as accurate as possible runtime
 figures.
 Analyse the impact that the following variations have on the observed values:
+
 • increase the overall number of data item processed
+
 • decrease the workload of all pipeline stages
+
 • keep WORKLOAD1, decrease the other two
+
 Run systematic experiments and produce graphs of your results. Try to explain
 your findings. A short text should suffice.
 
@@ -43,6 +47,7 @@ your findings. A short text should suffice.
 
 Modify your solution to 1.2 by changing your push and pop methods so that they use
 mutexes for implementing mutual exclusion.
+
 Repeat your experiments and contrast them to your findings from 1.2.
 
 
@@ -53,9 +58,9 @@ on pipelining. Each of your three worker threads should now perform all three pi
 stages on each data item they process.
 Try to keep the experimental setup close to the setup used earlier. In particular,
 do keep your input buffer and your output buffer. Rerun your experiments with this
-solution and interpret the results. How can you optimise the overhead that stems
-from the use of the input and output buffer? Measure and document the effect of any
-optimisation you try.
+solution and interpret the results. 
+
+How can you optimise the overhead that stems from the use of the input and output buffer? Measure and document the effect of any optimisation you try.
 
 
 ##Steps for running it:
